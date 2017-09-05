@@ -15,3 +15,8 @@
   - [Manage Branches](ch3-branch.md#branch-manage)
   - [Merge Branches](ch3-branch.md#branch-merge)
   - [Rebase Branches](ch3-branch.md#branch-rebase)
+- [Chapter 4 Git Remote Management](ch4-remote.md)
+  - [Remote Repository](ch4-remote.md#remote-repo)
+  - [Remote Tracking Branch](ch4-remote.md#remote-branch)
+  - [Remote Branch Synchronization](ch4-remote.md#remote-sync)
+

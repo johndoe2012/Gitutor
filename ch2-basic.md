@@ -73,31 +73,6 @@ Note all files are **already been tracked, and unmodified**.
 
 `git clone` supports `https`, `ssh`, and `git` protocols. 
 
-### Import Existing Repository to a Server
-
-We have an existing local Git repository, and want to copy it to a remote server. The repository on a server is a **bare repository, one without working directory**. 
-
-When a remote server is maintained by you instead of Github, you may need to create a bare repository. A **bare repository is a Git repository without working directory**. 
-
-1. `cd` to the **parent level** of local Git repository. 
-
-2. Run `git clone --bare localrepo barerepo.git`. A bare repo named `barerepo.git` is created as a clone of local project. It contains files in a regular `.git` directory of `localrepo `, but no working directory. 
-
-3. Copy the bare repository onto server, `scp -r barerepo.git <server url>:<path>/barerepo.git`.
-
-4. **Do another clone** is an easy way to make local directory track the remote one. Run `git clone <server url>:<path>/barerepo.git localproj`. 
-
-5. On server, `cd` to `<path>/bareproject.git` and run `git init --bare --shared` to **set proper write permission** to the repo on server.
-
-### Create New Git Repository on a Server
-
-We want to create a new empty Git repository on a server.
-
-1. On server, `cd` to the **parent level** of project root. 
-2. Run `git init --bare barerepo.git`. A Git directory named `bareproject.git` is created. 
-3. On local machine, Run `git clone <server url>:<path>/barerepo.git localrepo`. 
-
-
 ## Track Changes{#basic-track}
 
 ### Stage Files
