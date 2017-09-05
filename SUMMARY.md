@@ -24,4 +24,9 @@
   - [View Changes](ch5-history.md#history-diff)
   - [View History](ch5-history.md#history-log)
   - [Tag Commits](ch5-history.md#history-tag)
+- [Chapter 6 Distributed Workflow](ch6-workflow.md)
+  - [Commit Guideline](ch6-workflow.md#wf-guide)
+  - [Small Private Team](ch6-workflow.md#wf-small)
+  - [Managed Private Team](ch6-workflow.md#wf-managed)
+  - [Forked Public Project](ch6-workflow.md#wf-forked)
 

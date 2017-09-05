@@ -90,6 +90,23 @@ Use `git commit` to create a snapshot for **everything in the staging area**.
 
 - `git commit --amend` **appends current staging area to last commit**, and give you a chance to **change the commit message**. Note last commit is replaced by amended commit. Note redo commit may cause issue if it is done after a `git push`. 
 
+### Stash Files
+
+When we are working on a project in a messy state, but need to switch branch or make a merge, we need to put away the work temporarily. 
+
+Use `git stash` to put the work into a stack, then you will have a clean working directory. 
+
+After you come back to continue the work, use `git stash pop` to retrieve the previous work and remove it from the stack. 
+
+```shell
+$ git stash
+$ git stash list
+stash@{0}: WIP on master: 049d078 added the index file
+stash@{1}: WIP on master: c264051 Revert "added file_size"
+stash@{2}: WIP on master: 21d80a5 added number to log
+$ git stash pop
+```
+
 ### Remove Files
 
 When we `rm` a file in the file system, the file is only put into **modified but unstaged** state. To make Git reflect on this change, we still need to stage it and commit. 
