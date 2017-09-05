@@ -110,3 +110,21 @@ Use `git config --global alias.<newcommand> '<old command strings>'` to create a
 ### Check Configuration
 
 Use `git config --list` to check current configurations. 
+
+## Ignore Files {#intro-ignore}
+
+Add files to `.gitignore` file to prevent Git from automatically adding them or showing them as untracked. 
+
+- Files already tracked by Git are not affected. 
+- `.gitignore` should be **in working directory**, not the `.git` directory. 
+
+Rules for the `.gitignore` file are: 
+
+- Blank lines or lines starting with `#` are ignored.
+- Glob pattern
+  - `*` matches zero or more characters, `?` matches single character. 
+  - `[abc]` matches `a` or `b` or `c`.
+  - `[0-9]` matches range 0 to 9.
+  - `**` matches nested directory: `a/**/z` would match `a/z`, `a/b/z`, `a/b/c/z`
+- End pattern with `/` to specify directory.
+- Start pattern with `!` to negate it. 

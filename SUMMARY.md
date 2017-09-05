@@ -6,6 +6,7 @@
   - [Git Features](ch1-intro.md#intro-feature)
   - [Git Objects](ch1-intro.md#intro-object)
   - [Configuration ](ch1-intro.md#intro-config)
+  - [Ingore Files](ch1-intro.md#intro-ignore)
 - [Chapter 2 Basic Operations](ch2-basic.md)
   - [File Status](ch2-basic.md#basic-status)
   - [Git Repository](ch2-basic.md#basic-repo)
@@ -19,4 +20,8 @@
   - [Remote Repository](ch4-remote.md#remote-repo)
   - [Remote Tracking Branch](ch4-remote.md#remote-branch)
   - [Remote Branch Synchronization](ch4-remote.md#remote-sync)
+- [Chapter 5 Git History](ch5-history.md)
+  - [View Changes](ch5-history.md#history-diff)
+  - [View History](ch5-history.md#history-log)
+  - [Tag Commits](ch5-history.md#history-tag)
 
