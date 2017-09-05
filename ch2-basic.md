@@ -113,6 +113,8 @@ Use `git commit` to create a snapshot for **everything in the staging area**.
 - `git commit -m "comment"`: type commit message inline. 
 - `git commit -am "comment"`: stage all modified files, then commit. Note it does not work with untracked files. 
 
+- `git commit --amend` **appends current staging area to last commit**, and give you a chance to **change the commit message**. Note last commit is replaced by amended commit. Note redo commit may cause issue if it is done after a `git push`. 
+
 ### Remove Files
 
 When we `rm` a file in the file system, the file is only put into **modified but unstaged** state. To make Git reflect on this change, we still need to stage it and commit. 
@@ -138,24 +140,40 @@ Still, remember to commit the change.
 
 ## Undo Changes {#basic-undo}
 
-### Redo Commits
+### Syntax: `--` , `~`, and `^`
 
-Redo commit if you forget to add some files, or need to change commit message. 
+`git checkout -- <file>`. The **double dash `--` marks the end of option**, thus separates the Git object such as commit and branch, from file path. For instance it separates a file named `master` and a branch named `master`. 
 
-- `git commit --amend` **merges current staging area to last commit**, and give you a chance to change the commit message. Note last commit is replaced with amended commit. 
+`git revert HEAD~3`. The tilde `~n` means n commits from current `HEAD` commit. 
+
+`git revert HEAD^2`. The caret `^n` means nth parent of current `HEAD` commit if it is a merge commit. 
+
+![tilde and caret](./res/tilde-caret.svg)
 
 ### Unstage a File
 
 Unstage a file moves the file out of staging area **back to its original untracked or modified** state. 
 
 - `git reset HEAD -- <file>` to unstage. 
-- `git config --global alias.unstage 'reset HEAD --' ` to add an alias.  
+- `git config --global alias.unstage 'reset HEAD --' `.  
 
 ### Unmodify a File
 
 Unmodify a file discards all changes to a modified file, and use the **snapshot from last commit to copy over** the file. 
 
-- `git checkout -- <file>` to check out content into the working directory.
-- Note the **double dash `--` marks the end of option**, thus separates the git object from file path. For instance it separates a file named `master` and a branch named `master`. 
-- `git config --global alias.unmodify 'checkout --'` to add an alias. 
-- Note if the file is not in the last commit, the command fails. 
+- `git checkout HEAD -- <file>` to check out specified file content from last commit into the working directory.
+- `git checkout HEAD~2 -- <file>` to check out specified file content in third last commit into the working directory. 
+- `git config --global alias.unmodify 'checkout HEAD --'`. 
+- Note if the file is not in the previous commit, the command fails. 
+
+### Revert Commits
+
+We want to start a **new branch from a previous commit**, which require us to move the `HEAD` pointer to an early commit. 
+
+- `git checkout HEAD~2` to restore entire working directory to third last commit. 
+- Note the `HEAD` does not point to any branch at the moment which is dangerous. From here we **should make a new branch immediately**. 
+
+We have come changes that has already been committed, but we want to **discard these committed changes**. Git make the revert by find out the changes in those commit, recover the state of working directory before the changes, then **make a new commit for the reverted state**. 
+
+- `git revert HEAD~3`: Revert the changes specified by the fourth last commit in current branch, and create a new commit with the reverted changes.
+- `git revert topic~5..topic~2`: Revert the changes done by commits range from the fifth last commit in topic(exclusive), to the third last commit in topic (inclusive).

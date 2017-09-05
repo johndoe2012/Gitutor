@@ -57,6 +57,22 @@ Everything in `git` is check-summed with length 40 SHA-1 hash before it is store
 
 Nearly all operations in Git adds data to the database, so that it is hard to lose data. 
 
+## Git Objects {#intro-object}
+
+Git is basically a **key-value data store**. Every time we stage some files and make a commit, three types of objects are created:
+
+- it takes **snapshot of each file's content**, called `blob` object. A hash key is assigned to each `blob` object, and the `blob` is stored in a directory named by the key. Note `blob` is not exactly the file, but a snapshot of content. 
+
+- it creates a `tree` object to keep track of mapping between hash key and actual **filenames in the file system**. 
+
+- it creates a `commit` object with **meta data and a pointer to the tree**.
+
+  ![A commit and its tree](./res/objects.png)
+
+When consecutive commits are made, common object includes **a pointer to its parent commit object**. 
+
+![Commits and their parents](./res/commit-objects.png)
+
 ## Configuration {#intro-config}
 
 We can use `git config` tool to set and get the `Git` variable. The variables are stored in three files: 
